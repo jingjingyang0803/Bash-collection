@@ -1,0 +1,154 @@
+# 1. ////////////////////////////////////////////////////////////
+root@DESKTOP-JVB87Q4:~/shellone# sh sh1_vars_concat_sum.sh
+Here are three variables: 2  78  164
+
+Sum of the variables: 2+78+164=244
+# 2. ////////////////////////////////////////////////////////////
+# ---------------2.1 if no parameters are given------------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh2_cli_args_Ops.sh
+Please give TWO parameters.
+# ---------------2.2 if parameters are not integers--------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh2_cli_args_Ops.sh 9 abc
+Please give INTEGER as parameter.
+# ---------------2.3 Correct, both parameters are integers-------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh2_cli_args_Ops.sh 9 3
+You gave two numbers: 9 and 3
+
+The calculation result is shown below:
+Sum         12
+Difference  6
+Product     27
+Division    3
+
+# ---------------2.4 Correct, second parameter is zero-----------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh2_cli_args_Ops.sh 9 0
+You gave two numbers: 9 and 0
+
+The calculation result is shown below:
+Sum         9
+Difference  9
+Product     0
+Division    Undefined(division by zero)
+
+# 3. ////////////////////////////////////////////////////////////
+root@DESKTOP-JVB87Q4:~/shellone# sh sh3_read_int_inputs.sh
+# ---------------3.1 if input is empty---------------------------
+Enter two integers:
+# ---------------3.2 if input has only one item------------------
+Invalid input.Please give Two Integers: 4
+# ---------------3.3 if the two items are not integers-----------
+Invalid input.Please give Two Integers: 4 abc
+# ---------------3.4 Correct,both input items are integers-------
+Invalid input.Please give Two Integers: 4 2
+
+Here are the calculation result for 4 and 2:
+Sum         6
+Difference  2
+Product     8
+Division    2
+
+# ---------------3.5 Correct,second item is zero-----------------
+Invalid input.Please give Two Integers: 4 0
+
+Here are the calculation result for 4 and 0:
+Sum         4
+Difference  4
+Product     0
+Division    Undefined(division by zero)
+
+# 4. ////////////////////////////////////////////////////////////
+# ---------------4.1 if more than two arguments are given--------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh 1 2 3
+Too many parameters.Please try again.
+# ---------------4.2 Correct,two integers are given--------------
+# ---------------both are given by arguments---------------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh 8 2
+You gave two integers: 8 and 2
+
+The calculation result is shown below:
+Sum         10
+Difference  6
+Product     16
+Division    4
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh 8 0
+You gave two integers: 8 and 0
+
+The calculation result is shown below:
+Sum         8
+Difference  8
+Product     0
+Division    Undefined(division by zero)
+# ---------------one from argument, one from input---------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh 8
+Please enter another number: 2
+You gave two integers: 8 and 2
+
+The calculation result is shown below:
+Sum         10
+Difference  6
+Product     16
+Division    4
+# ---------------both are given by input---------------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh
+Enter two integers: 8 2
+You gave two integers: 8 and 2
+
+The calculation result is shown below:
+Sum         10
+Difference  6
+Product     16
+Division    4
+# ---------------4.3 if not integer--------------------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh abc 8
+Please give INTEGER as parameter.
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh abc
+Please give INTEGER as parameter.
+root@DESKTOP-JVB87Q4:~/shellone# sh sh4_Arith_func.sh 8
+Please enter another number: abc
+Invalid input.Please give An Integer: 2
+You gave two integers: 8 and 2
+
+The calculation result is shown below:
+Sum         10
+Difference  6
+Product     16
+Division    4
+# 5. ////////////////////////////////////////////////////////////
+# ---------------5.1 if not exactly two arguments are given--------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh
+Please specify TWO integers(1~9411) as PARAMETERs. I will fetch the RFCs between them and give you their titles.
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh 12
+Please specify TWO integers(1~9411) as PARAMETERs. I will fetch the RFCs between them and give you their titles.
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh 1 2 3
+Please specify TWO integers(1100~8649) as parameters.
+I will print out the title of the RFCs and number of lines in the RFC.
+# ---------------5.2 if given arguments are not integers--------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh 23 abc
+Please give two INTEGERs as parameters.
+I will print out the title of the RFCs and number of lines in the RFC.
+# ---------------5.3 Correct--------------------------------
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh 1 5
+Fetching 5 RFC files to /tmp/ ...
+File            | Number of lines | Title of RFC file
+rfc1-tmp.txt     619                 Host Software
+rfc2-tmp.txt     563                 Host software
+rfc3-tmp.txt     80                  Documentation conventions
+rfc4-tmp.txt     324                 Network timetable
+rfc5-tmp.txt     949                 Decode Encode Language (DEL)
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh 9411 9410
+Fetching 2 RFC files to /tmp/ ...
+File            | Number of lines | Title of RFC file
+rfc9410.txt      FILE NOT FOUND
+rfc9411-tmp.txt  2985                Benchmarking Methodology for Network Security Device Performance
+root@DESKTOP-JVB87Q4:~/shellone# sh sh5_fetch_RFC_grep.sh 2195 2195
+Fetching 1 RFC files to /tmp/ ...
+File            | Number of lines | Title of RFC file
+rfc2195-tmp.txt  283                 IMAP/POP AUTHorize Extension for Simple Challenge/Response
+root@DESKTOP-JVB87Q4:~/shellone# ll /tmp/rfc*
+-rw-r--r-- 1 root root  21088 Mar 31 00:25 /tmp/rfc1-tmp.txt
+-rw-r--r-- 1 root root  17145 Mar 31 00:25 /tmp/rfc2-tmp.txt
+-rw-r--r-- 1 root root  10468 Mar 31 00:27 /tmp/rfc2195-tmp.txt
+-rw-r--r-- 1 root root   2670 Mar 31 00:25 /tmp/rfc3-tmp.txt
+-rw-r--r-- 1 root root   5933 Mar 31 00:25 /tmp/rfc4-tmp.txt
+-rw-r--r-- 1 root root  27647 Mar 31 00:25 /tmp/rfc5-tmp.txt
+-rw-r--r-- 1 root root 133071 Mar 31 00:25 /tmp/rfc9411-tmp.txt
