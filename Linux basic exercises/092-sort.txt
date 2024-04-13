@@ -1,0 +1,22 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-09
+
+# Answer to exercise "9.0 Sort command-7.3 Manipulate data 2-9.2 Sort 2"
+
+# Problems: Give command to sort the database according to whole *phone* number field.
+
+
+sort -k 3 personDB.txt
+
+
+TESTING:
+jingjing@debian:~/tmp$ sort -k 3 personDB.txt
+            Brown, Robin    1-3745
+            Adams, Fran     2-3876
+            Benson, Sam     4-5587
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+            Smith, Terry    7-7989
+            Smith, Pat      9-3545
+
+# End of file

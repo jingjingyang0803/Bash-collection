@@ -1,0 +1,46 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "7.0 Output manipulation-7.2 Manipulate data 1"
+
+#        Save list of names using editor nano(1) to file "names.txt".
+#            Sam Waters
+#            Joe Cotton
+#            Mark Spencer
+#            Lyle Devorak
+#            Mark Thompson
+#            Joe Diffie
+#            Sam Jennings
+#
+#        Give command to extract unique first names in sorted order:
+#            Joe
+#            Lyle
+#            Mark
+#            Sam
+
+
+cat names.txt | awk '{print $1}'|sort -u
+
+
+TESTING:
+jingjing@debian:~/tmp$ nano names.txt
+jingjing@debian:~/tmp$ cat names.txt
+            Sam Waters
+            Joe Cotton
+            Mark Spencer
+            Lyle Devorak
+            Mark Thompson
+            Joe Diffie
+            Sam Jennings
+jingjing@debian:~$ cat names.txt | awk '{print $1}'|sort -u
+Joe
+Lyle
+Mark
+Sam
+
+
+# sort --help
+#  -u, --unique              with -c, check for strict ordering;
+                              without -c, output only the first of an equal run 
+
+# End of file

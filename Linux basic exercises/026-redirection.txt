@@ -1,0 +1,69 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-09
+#
+# Answer to exercise "2.6 Redirection 6"
+
+# Problem: Explain what happens in the following command:
+#            touch ls
+#            ls < ls > ls
+
+
+1) Using `touch ls` to create an empty file named "ls"(or updates the file modification timestamp if it alreday exists) in the current directory;
+2) The ls(1) command does not check its standard input under any circumstance and the redirection has no effect.
+The same would happen with any command that ignores its standard input, such as date(1), cd, mkdir(1) to name a few.
+So, using `ls < ls` actually equally to `ls`, which just lists the files and directories in the current directory.
+3) Using `> ls` to redirect standard output of command `ls` to the newly created file "ls".
+4) It would be easier to explain if we create the file with a less confusing name, for example "ls.txt": 
+So, what happles in the command: $ touch ls.txt; $ ls < ls.txt > ls.txt?
+Exactly the same result as: $ touch ls.txt; $ ls > ls.txt
+5) All in all, the command of this exercise simplily creates a file called "ls", then redirect the output of the `ls` command to that file.
+and then finally  with the ls command again
+
+
+----------------TESTING---------------
+jingjing@debian:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  tmp  Videos
+jingjing@debian:~$ touch ls
+jingjing@debian:~$ ls < ls > ls
+jingjing@debian:~$ cat ls
+Desktop
+Documents
+Downloads
+ls
+Music
+Pictures
+Public
+Templates
+tmp
+Videos
+
+jingjing@debian:~$ vim ls.txt
+jingjing@debian:~$ cat ls.txt
+ NOT EMPTY
+
+jingjing@debian:~$ ls < ls.txt
+Desktop    Downloads  ls.txt  Pictures  Templates  Videos
+Documents  ls         Music   Public    tmp
+jingjing@debian:~$ cat ls.txt
+ NOT EMPTY
+
+jingjing@debian:~$ ls < ls.txt > ls.txt
+jingjing@debian:~$ cat ls.txt
+Desktop
+Documents
+Downloads
+ls
+ls.txt
+Music
+Pictures
+Public
+Templates
+tmp
+Videos
+
+
+# Unlike the ls(1), the cat(1) command checks its standard input.
+# If cat(1) is passed to an argument, it assumes the argument is the name of the file (or files if there are multiple arguments) to print. 
+# If cat receives no arguments, it reads the stdin.
+
+# End of file

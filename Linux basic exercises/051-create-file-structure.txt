@@ -1,0 +1,62 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-01
+
+# Answer to exercise "5.0 Shell basic commands---5.1 Create file structure"
+
+# Problem:Create following file hierarchy. 
+#         For testing, use temporary location like "~/tmp".
+#
+#            some/
+#            |
+#            +-dir1/
+#            +-dir2/
+#            | |
+#            | +-doc1/
+#            | +-doc2/
+#            |   |
+#            |   +-test/
+#            |     |
+#            |     +-more/
+#            +-dir3/
+#              |
+#              +-html/
+
+
+cd ~/tmp; mkdir -p some/dir1 some/dir2/doc1 some/dir2/doc2/test/more some/dir3/html; cd some; tree
+
+
+TESTING:
+jingjing@debian:~$ cd ~/tmp; mkdir -p some/dir1 some/dir2/doc1 some/dir2/doc2/test/more some/dir3/html; cd some; tree
+.
+├── dir1
+├── dir2
+│   ├── doc1
+│   └── doc2
+│       └── test
+│           └── more
+└── dir3
+    └── html
+
+8 directories, 0 files
+jingjing@debian:~/tmp/some$
+------------------------------------------------------------------------
+jingjing@debian:~/tmp$ mkdir -p some/dir1
+jingjing@debian:~/tmp$ mkdir -p some/dir2/doc1
+jingjing@debian:~/tmp$ mkdir -p some/dir2/doc2/test/more
+jingjing@debian:~/tmp$ mkdir -p some/dir3/html
+jingjing@debian:~/tmp$ tree
+.
+└── some
+    ├── dir1
+    ├── dir2
+    │   ├── doc1
+    │   └── doc2
+    │       └── test
+    │           └── more
+    └── dir3
+        └── html
+
+9 directories, 0 files
+
+
+# End of file

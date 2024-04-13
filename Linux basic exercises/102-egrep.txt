@@ -1,0 +1,37 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "10.0 Egrep command-10.2 Egrep 2"
+
+#        Give command to search database for all person whose *last* name start with "S" and whose *phone* number contain "2"
+
+
+egrep "(^S| S)[a-zA-Z]+," data.txt | egrep "2"
+
+
+TESTING:
+jingjing@debian:~$ cat data.txt
+            Adams, Fran     2-3876
+            Smith, Terry    7-7989
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+            Benson, Sam     4-5587
+            Brown, Robin    1-3745
+jingjing@debian:~$ egrep "(^S| S)[a-zA-Z]+," data.txt
+            Smith, Terry    7-7989
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+jingjing@debian:~$ egrep "(^S| S)[a-zA-Z]+," data.txt | egrep "2"
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+
+jingjing@debian:~$ echo "Smith, Laula" | egrep "(^S| S)[a-zA-Z]+,"
+Smith, Laula
+jingjing@debian:~$ echo "CSmith, Laula" | egrep "(^S| S)[a-zA-Z]+,"
+jingjing@debian:~$
+
+
+# *       0 or more. That is, a element is NOT required or MORE
+# +       1 or more. That is, a element is REQUIRED     
+
+# End of file

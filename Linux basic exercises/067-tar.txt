@@ -1,0 +1,27 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-02
+
+# Answer to exercise "6.0 Archiving file-6.7 Tar 5"
+
+# Problem: Give command to extract only ONE file "tmp/dir1/1.lst" from the archive.
+
+
+for package.tar.gz---
+                 tar -zxvf package.tar.gz tmp/dir1/1.1st                 
+for package.tar.bz2
+                 tar -jxvf package.tar.bz2 tmp/dir1/1.1st
+
+
+TESTING:
+jingjing@debian:~$ tar -zxvf package.tar.gz tmp/dir1/1.1st
+tmp/dir1/1.1st
+jingjing@debian:~$ tar -jxvf package.tar.bz2 tmp/dir1/1.1st
+tmp/dir1/1.1st
+
+
+# To extract only one file or files from the archive, list them in place of the dash (-) stdin marker.
+# -c         Write output on standard output; keep original files unchanged.
+
+# http://cante.net/~jaalto/course/linux-server-tite-en/lect/shell/#tar_tape_archiver
+
+# End of file

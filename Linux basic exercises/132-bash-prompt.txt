@@ -1,0 +1,58 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-11
+
+# Answer to exercise "13.0 Bash configuration-13.2 Bash prompt"
+
+# The default setting for bash prompt does not always display the current directory information. 
+# See bash(1) manual page: http://www.gnu.org/software/bash/manual/bashref.html#index-PS1
+#        Set the prompt in Bash startup file ~/.bashrc to display:
+#            [gamma 3 12:21] ~/tmp$ <your-cursor-is-here>
+#             |     | |      |    |
+#             |     | |      |    The "bash" dollar character sign
+#             |     | |      current directory
+#             |     | time
+#             |     command history number
+#             Host name
+
+
+PS1="[\H \! \A] \w$ "
+
+
+Steps:
+To save the PS1 value permanently, open the ~/.bashrc file by using any text editor. 
+Add the following line at the end of the file, save the file and quit from the editor.
+PS1="[\H \! \A] \w$ "
+Run the following command update the current command prompt for adding the line in the ~/.bashrc file.
+$ source ~/.bashrc
+
+
+TESTING:
+jingjing@debian:~$ echo $PS1
+\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+jingjing@debian:~$ echo $-;shopt login_shell
+himBHs
+login_shell     on
+jingjing@debian:~$ export PS1="[\H \! \A] \w$ "
+[debian 704 03:10] ~$ ls -a
+.              .bashrc  Documents  Music     .ssh       .viminfo
+..             .cache   Downloads  Pictures  Templates
+.bash_history  .config  .gnupg     .profile  tmp
+.bash_logout   Desktop  .local     Public    Videos
+[debian 705 03:10] ~$ nano .bashrc
+[debian 706 03:11] ~$ echo $PS1
+[\H \! \A] \w$
+[debian 707 03:12] ~$ source ~/.bashrc
+
+
+# \u	It is used to display the current username.
+# \h	It is used to the name of the computer name.
+# \w	It is used to display the full path of the current working directory.
+
+# \H	It is used to the name of the hostname.
+# \!       the history number of this command
+# \A       the current time in 24-hour HH:MM format
+
+# https://linuxhint.com/bash-ps1-customization/
+# https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+
+# End of file

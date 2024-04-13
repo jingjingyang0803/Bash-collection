@@ -1,0 +1,77 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-01-24
+
+# Answer to exercise "8.0 File globbing-8.3 File glob 3"
+
+#        Give command to list files that have any three letter extension.
+
+1) start from current directory
+option one---
+              find -type f -iname "*.[a-z][a-z][a-z]"
+option two---
+              find -type f -name "*.[a-zA-Z][a-zA-Z][a-zA-Z]"
+option three---
+              find -type f -name "*.[[:alpha:]][[:alpha:]][[:alpha:]]"
+2) current directory
+option one("äö" not included)---
+              ls *.[a-zA-Z][a-zA-Z][a-zA-Z]
+option two---
+              ls *.[[:alpha:]][[:alpha:]][[:alpha:]]
+
+
+# `find -type f -iname "*.[a-z]{3}"` doest not work in BASH.
+
+
+TESTING:
+jingjing@debian:~/test$ ls -R
+.:
+dir1  error.log  error.lög  file.excel  file.tmp  four  one.doc  three.67c  two.Doc
+
+./dir1:
+1.txt  2.txT  3.3
+jingjing@debian:~/test$ find -type f -iname "*.[a-z][a-z][a-z]"
+./file.tmp
+./error.lög
+./one.doc
+./two.Doc
+./dir1/2.txT
+./dir1/1.txt
+./error.log
+jingjing@debian:~/test$ find -type f -name "*.[a-zA-Z][a-zA-Z][a-zA-Z]"
+./file.tmp
+./error.lög
+./one.doc
+./two.Doc
+./dir1/2.txT
+./dir1/1.txt
+./error.log
+jingjing@debian:~/test$ find -type f -name "*.[[:alpha:]][[:alpha:]][[:alpha:]]"
+./file.tmp
+./error.lög
+./one.doc
+./two.Doc
+./dir1/2.txT
+./dir1/1.txt
+./error.log
+jingjing@debian:~/test$ ls "*.[a-zA-Z][a-zA-Z][a-zA-Z]"
+ls: cannot access '*.[a-zA-Z][a-zA-Z][a-zA-Z]': No such file or directory
+jingjing@debian:~/test$ ls *.[a-zA-Z][a-zA-Z][a-zA-Z]
+error.log  file.tmp  one.doc  two.Doc
+jingjing@debian:~/test$ ls *.[[:alpha:]][[:alpha:]][[:alpha:]]
+error.log  error.lög  file.tmp  one.doc  two.Doc
+
+
+
+#      Named class     Traditional character class (range)
+#      ----------      -----------------------------------
+#      [:alpha:]       [a-zA-Z]
+#      [:lower:]       [a-z]
+#      [:upper:]       [A-Z]
+
+#      a-zA-Z    =   [:alpha:] 
+#  [:alpha:] matches all alphabetic characters it will work the same across different languages, operations systems or locations.
+
+#  -i Ignore case sensitivity during matching pattern.
+#  {N}     N times exactly. Example: "[0-9]{4}", like in year 2000.
+
+# End of file

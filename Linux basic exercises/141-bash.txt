@@ -1,0 +1,32 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-11
+
+# Answer to exercise "14.0 User commands-14.1 Bash 2"
+
+#      ** User commands can be added to shell startup files
+#      ** Bash: ~/.bashrc and Zsh (Mac): ~/.zshrc
+#         Write a user command that displays only directories.
+
+
+alias lsd='ls -d */'
+
+
+jingjing@debian:~$ ls -a
+.   .bash_history  .bashrc  .config  Documents  .gnupg  Music     .profile  .ssh       Videos
+..  .bash_logout   .cache   Desktop  Downloads  .local  Pictures  Public    Templates  .viminfo
+jingjing@debian:~$ ls
+Desktop    Downloads  file.txt  Pictures  Templates  Videos
+Documents  file2.doc  Music     Public    tmp
+jingjing@debian:~$ ls -d */
+Desktop/    Downloads/  Pictures/  Templates/  Videos/
+Documents/  Music/      Public/    tmp/
+
+jingjing@debian:~$ nano .bashrc
+jingjing@debian:~$ source .bashrc
+jingjing@debian:~$ lsd
+Desktop/    Downloads/  Pictures/  Templates/  Videos/
+Documents/  Music/      Public/    tmp/
+
+# Using "Ctrl + W" and "Ctrl + V" to jump to end of file in nano.
+
+# End of file

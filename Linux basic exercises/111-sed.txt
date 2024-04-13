@@ -1,0 +1,57 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "11.0 Sed command-11.1 Sed 1"
+
+#        Give command to remove extra spaces. 
+#        Every word must be followed by only one space.
+
+
+sed -i 's/ \+/ /g' names.txt
+
+
+TESTING:
+jingjing@debian:~$ nano names.txt
+jingjing@debian:~$ cp names.txt names2.txt
+jingjing@debian:~$ cat names.txt
+            Ellen Jones work place 10
+            Ellen Jones phone   number 234-5678
+            Mike Jackson   work Place 12
+            Mike Jackson phone number 234-1234
+            Evelyn Jordan work Place   12
+            Evelyn   Jordan phone number 123-5678
+            Ike Deveron   work   Place   10
+            Ike Deveron phone number   234-1234
+jingjing@debian:~$ sed -e 's/ \+/ /g' names.txt
+ Ellen Jones work place 10
+ Ellen Jones phone number 234-5678
+ Mike Jackson work Place 12
+ Mike Jackson phone number 234-1234
+ Evelyn Jordan work Place 12
+ Evelyn Jordan phone number 123-5678
+ Ike Deveron work Place 10
+ Ike Deveron phone number 234-1234
+jingjing@debian:~$ sed -i 's/ \+/ /g' names.txt
+jingjing@debian:~$ cat names.txt
+ Ellen Jones work place 10
+ Ellen Jones phone number 234-5678
+ Mike Jackson work Place 12
+ Mike Jackson phone number 234-1234
+ Evelyn Jordan work Place 12
+ Evelyn Jordan phone number 123-5678
+ Ike Deveron work Place 10
+ Ike Deveron phone number 234-1234
+
+
+# -i       tells the sed command to write the results to a file instead of standard output.
+
+# To create a backup file before overwriting the existing one, add the .bak parameter to the -i tag.
+# sed -i.bak ...
+
+# [address]s/RE/replacement/[flag]
+#          |
+#          substitute command 
+# s = substitute
+# The (g)lobal flag causes regular expression search to continue to the end of line.
+
+# End of file

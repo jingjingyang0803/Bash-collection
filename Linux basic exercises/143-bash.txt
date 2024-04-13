@@ -1,0 +1,166 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-11
+
+# Answer to exercise "14.0 User commands-14.3 Bash 4"
+
+#      ** User commands can be added to shell startup files
+#      ** Bash: ~/.bashrc and Zsh (Mac): ~/.zshrc
+#         Write a user command that uses ps(1) to display only your processes.
+
+
+alias myps='ps -x'
+alias myps='ps -u $whoami'
+
+
+TESTING:
+jingjing@debian:~$ ps -ef | less
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 Mar10 ?        00:00:06 /sbin/init
+root           2       0  0 Mar10 ?        00:00:00 [kthreadd]
+root           3       2  0 Mar10 ?        00:00:00 [rcu_gp]
+root           4       2  0 Mar10 ?        00:00:00 [rcu_par_gp]
+root           6       2  0 Mar10 ?        00:00:00 [kworker/0:0H-events_highpri]
+root           8       2  0 Mar10 ?        00:00:00 [mm_percpu_wq]
+root           9       2  0 Mar10 ?        00:00:00 [rcu_tasks_rude_]
+root          10       2  0 Mar10 ?        00:00:00 [rcu_tasks_trace]
+root          11       2  0 Mar10 ?        00:00:00 [ksoftirqd/0]
+root          12       2  0 Mar10 ?        00:00:04 [rcu_sched]
+root          13       2  0 Mar10 ?        00:00:05 [migration/0]
+root          15       2  0 Mar10 ?        00:00:00 [cpuhp/0]
+root          16       2  0 Mar10 ?        00:00:00 [cpuhp/1]
+root          17       2  0 Mar10 ?        00:00:00 [migration/1]
+root          18       2  0 Mar10 ?        00:00:06 [ksoftirqd/1]
+root          20       2  0 Mar10 ?        00:00:00 [kworker/1:0H-events_highpri]
+root          23       2  0 Mar10 ?        00:00:00 [kdevtmpfs]
+root          24       2  0 Mar10 ?        00:00:00 [netns]
+root          25       2  0 Mar10 ?        00:00:00 [kauditd]
+root          26       2  0 Mar10 ?        00:00:00 [khungtaskd]
+:
+
+jingjing@debian:~$ ps -ef | grep "jingjing" | less
+jingjing     898       1  0 Mar10 ?        00:00:01 /lib/systemd/systemd --user
+jingjing     899     898  0 Mar10 ?        00:00:00 (sd-pam)
+jingjing     913     898  0 Mar10 ?        00:00:00 /usr/bin/pipewire
+jingjing     914     898  0 Mar10 ?        00:00:01 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+jingjing     917     898  0 Mar10 ?        00:00:01 /usr/libexec/tracker-miner-fs
+jingjing     920       1  0 Mar10 ?        00:00:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+jingjing     924     891  0 Mar10 tty2     00:00:00 /usr/libexec/gdm-wayland-session /usr/bin/gnome-session
+jingjing     926     898  0 Mar10 ?        00:00:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+jingjing     931     924  0 Mar10 tty2     00:00:00 /usr/libexec/gnome-session-binary --systemd
+jingjing     932     913  0 Mar10 ?        00:00:00 /usr/bin/pipewire-media-session
+jingjing     944     898  0 Mar10 ?        00:00:00 /usr/libexec/gvfsd
+jingjing     965     898  0 Mar10 ?        00:00:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f
+jingjing     984     898  0 Mar10 ?        00:00:00 /usr/libexec/gvfs-udisks2-volume-monitor
+jingjing     989     898  0 Mar10 ?        00:00:11 /usr/libexec/gvfs-afc-volume-monitor
+jingjing     994     898  0 Mar10 ?        00:00:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+jingjing     998     898  0 Mar10 ?        00:00:00 /usr/libexec/gvfs-goa-volume-monitor
+jingjing    1002     898  0 Mar10 ?        00:00:00 /usr/libexec/goa-daemon
+jingjing    1021     898  0 Mar10 ?        00:00:00 /usr/libexec/goa-identity-service
+jingjing    1031     898  0 Mar10 ?        00:00:00 /usr/libexec/gnome-session-ctl --monitor
+jingjing    1032     898  0 Mar10 ?        00:00:00 /usr/libexec/gvfs-mtp-volume-monitor
+jingjing    1034     898  0 Mar10 ?        00:00:00 ssh-agent -D -a /run/user/1000/openssh_agent
+jingjing    1037     898  0 Mar10 ?        00:00:00 /usr/libexec/gnome-session-binary --systemd-service --session=gnome
+jingjing    1060     898  0 Mar10 ?        00:01:07 /usr/bin/gnome-shell
+jingjing    1061    1037  0 Mar10 ?        00:00:00 /usr/libexec/at-spi-bus-launcher --launch-immediately
+jingjing    1067    1061  0 Mar10 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+jingjing    1091    1060  0 Mar10 ?        00:00:00 /usr/bin/Xwayland :0 -rootless -noreset -accessx -core -auth /run/user/1000/.mutter-Xwaylandauth.OODA11 -listen 4 -listen 5 -displayfd 6 -listen 7
+jingjing    1111     898  0 Mar10 ?        00:00:00 /usr/libexec/xdg-permission-store
+jingjing    1116     898  0 Mar10 ?        00:00:00 /usr/libexec/gnome-shell-calendar-server
+jingjing    1122     898  0 Mar10 ?        00:00:00 /usr/libexec/evolution-source-registry
+jingjing    1135     898  0 Mar10 ?        00:00:00 /usr/libexec/evolution-calendar-factory
+jingjing    1140     898  0 Mar10 ?        00:00:00 /usr/libexec/at-spi2-registryd --use-gnome-session
+jingjing    1141     898  0 Mar10 ?        00:00:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications
+jingjing    1148     898  0 Mar10 ?        00:00:00 /usr/libexec/gsd-a11y-settings
+jingjing    1149     898  0 Mar10 ?        00:00:00 /usr/libexec/gsd-color
+jingjing    1151     898  0 Mar10 ?        00:00:00 /usr/libexec/gsd-datetime
+jingjing    1155     898  0 Mar10 ?        00:00:01 /usr/libexec/gsd-housekeeping
+jingjing    1158     898  0 Mar10 ?        00:00:00 /usr/libexec/gsd-keyboard
+jingjing    1165    1037  0 Mar10 ?        00:00:00 /usr/libexec/gsd-disk-utility-notify
+:
+
+jingjing@debian:~$ ps -x | less
+    PID TTY      STAT   TIME COMMAND
+    898 ?        Ss     0:01 /lib/systemd/systemd --user
+    899 ?        S      0:00 (sd-pam)
+    913 ?        S<sl   0:00 /usr/bin/pipewire
+    914 ?        S<sl   0:01 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+    917 ?        SNsl   0:01 /usr/libexec/tracker-miner-fs
+    920 ?        Sl     0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+    924 tty2     Ssl+   0:00 /usr/libexec/gdm-wayland-session /usr/bin/gnome-session
+    926 ?        Ss     0:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    931 tty2     Sl+    0:00 /usr/libexec/gnome-session-binary --systemd
+    932 ?        S<l    0:00 /usr/bin/pipewire-media-session
+    944 ?        Ssl    0:00 /usr/libexec/gvfsd
+    965 ?        Sl     0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f
+    984 ?        Ssl    0:00 /usr/libexec/gvfs-udisks2-volume-monitor
+    989 ?        Ssl    0:11 /usr/libexec/gvfs-afc-volume-monitor
+    994 ?        Ssl    0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+    998 ?        Ssl    0:00 /usr/libexec/gvfs-goa-volume-monitor
+   1002 ?        Sl     0:00 /usr/libexec/goa-daemon
+   1021 ?        Sl     0:00 /usr/libexec/goa-identity-service
+   1031 ?        Ssl    0:00 /usr/libexec/gnome-session-ctl --monitor
+   1032 ?        Ssl    0:00 /usr/libexec/gvfs-mtp-volume-monitor
+   1034 ?        Ss     0:00 ssh-agent -D -a /run/user/1000/openssh_agent
+   1037 ?        Ssl    0:00 /usr/libexec/gnome-session-binary --systemd-service --session=gnome
+   1060 ?        Ssl    1:07 /usr/bin/gnome-shell
+   1061 ?        Sl     0:00 /usr/libexec/at-spi-bus-launcher --launch-immediately
+   1067 ?        S      0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+   1091 ?        Sl     0:00 /usr/bin/Xwayland :0 -rootless -noreset -accessx -core -auth /run/user/1000/.mutter-Xwaylandauth.OODA11 -listen 4 -listen 5 -displayfd 6 -listen 7
+   1111 ?        Ssl    0:00 /usr/libexec/xdg-permission-store
+   1116 ?        Sl     0:00 /usr/libexec/gnome-shell-calendar-server
+   1122 ?        Ssl    0:00 /usr/libexec/evolution-source-registry
+   1135 ?        Ssl    0:00 /usr/libexec/evolution-calendar-factory
+   1140 ?        Sl     0:00 /usr/libexec/at-spi2-registryd --use-gnome-session
+   1141 ?        Sl     0:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications
+   1148 ?        Ssl    0:00 /usr/libexec/gsd-a11y-settings
+   1149 ?        Ssl    0:00 /usr/libexec/gsd-color
+   1151 ?        Ssl    0:00 /usr/libexec/gsd-datetime
+   1155 ?        Ssl    0:01 /usr/libexec/gsd-housekeeping
+   1158 ?        Ssl    0:00 /usr/libexec/gsd-keyboard
+   1165 ?        Sl     0:00 /usr/libexec/gsd-disk-utility-notify
+:
+
+jingjing@debian:~$ myps | less
+    PID TTY      STAT   TIME COMMAND
+    898 ?        Ss     0:01 /lib/systemd/systemd --user
+    899 ?        S      0:00 (sd-pam)
+    913 ?        S<sl   0:00 /usr/bin/pipewire
+    914 ?        S<sl   0:01 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+    917 ?        SNsl   0:01 /usr/libexec/tracker-miner-fs
+    920 ?        Sl     0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+    924 tty2     Ssl+   0:00 /usr/libexec/gdm-wayland-session /usr/bin/gnome-session
+    926 ?        Ss     0:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    931 tty2     Sl+    0:00 /usr/libexec/gnome-session-binary --systemd
+    932 ?        S<l    0:00 /usr/bin/pipewire-media-session
+    944 ?        Ssl    0:00 /usr/libexec/gvfsd
+    965 ?        Sl     0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f
+    984 ?        Ssl    0:00 /usr/libexec/gvfs-udisks2-volume-monitor
+    989 ?        Ssl    0:11 /usr/libexec/gvfs-afc-volume-monitor
+    994 ?        Ssl    0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+    998 ?        Ssl    0:00 /usr/libexec/gvfs-goa-volume-monitor
+   1002 ?        Sl     0:00 /usr/libexec/goa-daemon
+   1021 ?        Sl     0:00 /usr/libexec/goa-identity-service
+   1031 ?        Ssl    0:00 /usr/libexec/gnome-session-ctl --monitor
+   1032 ?        Ssl    0:00 /usr/libexec/gvfs-mtp-volume-monitor
+   1034 ?        Ss     0:00 ssh-agent -D -a /run/user/1000/openssh_agent
+   1037 ?        Ssl    0:00 /usr/libexec/gnome-session-binary --systemd-service --session=gnome
+   1060 ?        Ssl    1:07 /usr/bin/gnome-shell
+   1061 ?        Sl     0:00 /usr/libexec/at-spi-bus-launcher --launch-immediately
+   1067 ?        S      0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+   1091 ?        Sl     0:00 /usr/bin/Xwayland :0 -rootless -noreset -accessx -core -auth /run/user/1000/.mutter-Xwaylandauth.OODA11 -listen 4 -listen 5 -displayfd 6 -listen 7
+   1111 ?        Ssl    0:00 /usr/libexec/xdg-permission-store
+   1116 ?        Sl     0:00 /usr/libexec/gnome-shell-calendar-server
+   1122 ?        Ssl    0:00 /usr/libexec/evolution-source-registry
+   1135 ?        Ssl    0:00 /usr/libexec/evolution-calendar-factory
+   1140 ?        Sl     0:00 /usr/libexec/at-spi2-registryd --use-gnome-session
+   1141 ?        Sl     0:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications
+   1148 ?        Ssl    0:00 /usr/libexec/gsd-a11y-settings
+   1149 ?        Ssl    0:00 /usr/libexec/gsd-color
+   1151 ?        Ssl    0:00 /usr/libexec/gsd-datetime
+   1155 ?        Ssl    0:01 /usr/libexec/gsd-housekeeping
+   1158 ?        Ssl    0:00 /usr/libexec/gsd-keyboard
+   1165 ?        Sl     0:00 /usr/libexec/gsd-disk-utility-notify
+:
+
+
+# End of file

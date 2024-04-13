@@ -1,0 +1,30 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-07
+
+# Answer to exercise "4.0 Meta character for command substitution---4.1 Meta character 1"
+
+# Problem: Explain what happens in next command and what is the result.
+#            echo "The Result of this command is $(ls -la | wc -l) "
+
+
+The command will print the number of files and directories in the current directory.
+the output would be "The Result of this command is 16 " (assuming there are 16 files and directories in the current directory).
+
+
+Explanation:
+            "echo" command is used to display line of text/string to the terminal.
+            The command inside $() is executed and replaced by its standard output.
+            The "ls -la" command lists all files and directories in the current directory,including those that begin with .
+            The output is then piped (represented by the "|" symbol) to the "wc -l" command, which counts the number of lines in the output. 
+            This gives the total number of files and directories in the current directory.
+
+
+TESTING:
+jingjing@debian:~$ echo "The Result of this command is $(ls -la | wc -l) "
+The Result of this command is 24 
+
+
+# wc (short for word count) is a command in Linux that displays a count of lines, words, and bytes for each file you specify.
+# It can return the number of lines in a file, the number of characters in a file and the number of words in a file.
+
+# End of file

@@ -1,0 +1,43 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.2 Find 2"
+
+# Problem: Give command to find a specific file "document.pdf" under both the directories "~/tmp" and "~/doc".
+
+
+find ~/tmp ~/doc -name "document.pdf" -type f
+
+
+TESTING:
+jingjing@debian:~$ tree tmp
+tmp
+├── dir1
+│   ├── 1.1st
+│   ├── 2.txt
+│   ├── dir2
+│   │   ├── 1.txt
+│   │   ├── 2.1st
+│   │   └── here
+│   │       ├── 1.tmp
+│   │       └── 2.tmp
+│   └── document.pdf
+└── document.pdf
+
+4 directories, 7 files
+jingjing@debian:~$ tree doc
+doc
+├── 1.txt
+├── document.pdf
+└── here
+    └── document.pdf
+
+2 directories, 2 files
+jingjing@debian:~$ find ~/tmp ~/doc -name "document.pdf" -type f
+/home/jingjing/tmp/dir1/document.pdf
+/home/jingjing/doc/document.pdf
+
+
+# To find the files in different directories, add their paths in the command.
+
+# End of file

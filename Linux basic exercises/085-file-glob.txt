@@ -1,0 +1,25 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "8.0 File globbing-8.5 File glob 5"
+
+#        Give command to list all files that look suspicious. 
+#        A filename is suspicious if it contains anything else but:
+#                   - lowercase or uppercase letters
+#                   - numbers
+#                   - underscores(_)
+#                   - dashes(-)
+#                   - dots(.)
+
+
+ls *[!a-zA-Z0-9\_\-\.]*
+
+
+TESTING:
+jingjing@debian:~/demo$ ls
+'*'   _   1  '?12'   3-   a   B
+jingjing@debian:~/demo$ ls *[!a-zA-Z0-9\_\-\.]*
+'*'  '?12'
+
+
+# End of file

@@ -1,0 +1,44 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.7 Find 8"
+
+#  Problem: Give command to list files that have read permission for "all" under "~/tmp".
+#           You are concerned about the security of your files and want to find potential dangerous permission settings. 
+
+
+option one---
+             find ~/tmp -type f -perm -444 -exec ls -l {} \;
+option two---
+             find ~/tmp -type f -perm -444 -ls
+
+
+TESTING:
+jingjing@debian:~/tmp$ touch one two three four
+jingjing@debian:~/tmp$ chmod 644 one
+jingjing@debian:~/tmp$ chmod 600 two
+jingjing@debian:~/tmp$ chmod 604 three
+jingjing@debian:~/tmp$ chmod 044 four
+jingjing@debian:~/tmp$ mkdir five
+jingjing@debian:~/tmp$ chmod 644 five
+jingjing@debian:~/tmp$ ls -l
+total 4
+drw-r--r-- 2 jingjing jingjing 4096 Mar  9 20:10 five
+----r--r-- 1 jingjing jingjing    0 Mar  9 20:09 four
+-rw-r--r-- 1 jingjing jingjing    0 Mar  9 20:09 one
+-rw----r-- 1 jingjing jingjing    0 Mar  9 20:09 three
+-rw------- 1 jingjing jingjing    0 Mar  9 20:09 two
+jingjing@debian:~/tmp$ find ~/tmp -type f -perm -444 -exec ls -l {} \;
+-rw-r--r-- 1 jingjing jingjing 0 Mar  9 20:09 /home/jingjing/tmp/one
+jingjing@debian:~/tmp$ find ~/tmp -type f -perm -444 -ls
+   783454      0 -rw-r--r--   1 jingjing jingjing        0 Mar  9 20:09 /home/jingjing/tmp/one
+
+
+# -r 4, -w 2, -x 1
+# You can specify the mode in the following three different ways.
+# Without a prefix when you want to find files with the exact permissions specified.
+# With “-“ for files with at least the specified permission. This returns files with the specified as well as additional higher permissions.
+# Using “/” requires specifying the owner or group with the permission to the file.
+# https://geekflare.com/linux-find-commands/
+
+# End of file

@@ -1,0 +1,41 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "8.0 File globbing-8.2 File glob 2"
+
+#        Give command to list all files ending to *.lst* or *.log*
+#        and contain a number anywhere in the name.
+
+
+option one---
+             ls -l *[0-9]*.lst *[0-9]*.log
+option one---
+             find -type f \( -name "*[0-9]*.lst" -o -name "*[0-9]*.log" \)
+
+
+# `find -type f -name "*[0-9]*.(lst|log)"` does not work in BASH.
+# Limit number occurance to one `find -type f \( -name "*[0-9]{1}*.lst" -o -name "*[0-9]{1}*.log" \)` does not work in BASH.
+
+
+TESTING:
+jingjing@debian:~/demo$ ls
+0file.lst  3file33.log  file1.log  file1.lst  file22.log  file2file.lst  file.lst  file.txt
+jingjing@debian:~/demo$ ls *[0-9]*.lst *[0-9]*.log
+0file.lst  3file33.log  file1.log  file1.lst  file22.log  file2file.lst
+jingjing@debian:~/demo$ ls -l *[0-9]*.lst *[0-9]*.log
+-rw-r--r-- 1 jingjing jingjing 0 Mar 10 02:42 0file.lst
+-rw-r--r-- 1 jingjing jingjing 0 Mar 10 02:42 3file33.log
+-rw-r--r-- 1 jingjing jingjing 0 Mar 10 02:42 file1.log
+-rw-r--r-- 1 jingjing jingjing 0 Mar 10 02:42 file1.lst
+-rw-r--r-- 1 jingjing jingjing 0 Mar 10 02:42 file22.log
+-rw-r--r-- 1 jingjing jingjing 0 Mar 10 02:42 file2file.lst
+jingjing@debian:~/demo$ find -type f \( -name "*[0-9]*.lst" -o -name "*[0-9]*.log" \)
+./3file33.log
+./file1.lst
+./file2file.lst
+./file22.log
+./0file.lst
+./file1.log
+
+
+# End of file

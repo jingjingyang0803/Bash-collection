@@ -1,0 +1,61 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-09
+
+# Answer to exercise "9.0 Sort command-7.3 Manipulate data 2-9.4 Sort 4"
+
+# Problem: Give command to sort the "ls -la" listing by file name.
+
+
+ls -la | sort -k 9
+
+
+TESTING:
+jingjing@debian:~$ ls -la
+total 92
+drwxr-xr-x 16 jingjing jingjing  4096 Mar  9 01:14 .
+drwxr-xr-x  3 root     root      4096 Mar  6 18:34 ..
+-rw-------  1 jingjing jingjing   928 Mar  8 13:02 .bash_history
+-rw-r--r--  1 jingjing jingjing   220 Mar  6 18:34 .bash_logout
+-rw-r--r--  1 jingjing jingjing  3526 Mar  6 18:34 .bashrc
+drwx------ 11 jingjing jingjing  4096 Mar  8 12:33 .cache
+drwx------ 10 jingjing jingjing  4096 Mar  6 19:37 .config
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Desktop
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Documents
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Downloads
+drwx------  2 jingjing jingjing  4096 Mar  9 00:35 .gnupg
+drwxr-xr-x  3 jingjing jingjing  4096 Mar  6 18:41 .local
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Music
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Pictures
+-rw-r--r--  1 jingjing jingjing   807 Mar  6 18:34 .profile
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Public
+drwx------  2 jingjing jingjing  4096 Mar  6 18:42 .ssh
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Templates
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  9 01:22 tmp
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Videos
+-rw-------  1 jingjing jingjing 11045 Mar  8 14:04 .viminfo
+jingjing@debian:~$ ls -la | sort -k 9
+total 92
+drwxr-xr-x 16 jingjing jingjing  4096 Mar  9 01:14 .
+drwxr-xr-x  3 root     root      4096 Mar  6 18:34 ..
+-rw-------  1 jingjing jingjing   928 Mar  8 13:02 .bash_history
+-rw-r--r--  1 jingjing jingjing   220 Mar  6 18:34 .bash_logout
+-rw-r--r--  1 jingjing jingjing  3526 Mar  6 18:34 .bashrc
+drwx------ 11 jingjing jingjing  4096 Mar  8 12:33 .cache
+drwx------ 10 jingjing jingjing  4096 Mar  6 19:37 .config
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Desktop
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Documents
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Downloads
+drwx------  2 jingjing jingjing  4096 Mar  9 00:35 .gnupg
+drwxr-xr-x  3 jingjing jingjing  4096 Mar  6 18:41 .local
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Music
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Pictures
+-rw-r--r--  1 jingjing jingjing   807 Mar  6 18:34 .profile
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Public
+drwx------  2 jingjing jingjing  4096 Mar  6 18:42 .ssh
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Templates
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  9 01:22 tmp
+drwxr-xr-x  2 jingjing jingjing  4096 Mar  6 18:41 Videos
+-rw-------  1 jingjing jingjing 11045 Mar  8 14:04 .viminfo
+
+
+# End of file

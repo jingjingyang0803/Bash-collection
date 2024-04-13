@@ -1,0 +1,44 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "11.0 Sed command-11.2 Sed 2"
+
+#        Give command to change "Ellen Jones" to "Ellen Michaels".
+
+
+sed -i 's/Ellen Jones/Ellen Michaels/g' names.txt
+
+
+TESTING:
+jingjing@debian:~$ cat names2.txt > names.txt
+jingjing@debian:~$ cat names.txt
+            Ellen Jones work place 10
+            Ellen Jones phone   number 234-5678
+            Mike Jackson   work Place 12
+            Mike Jackson phone number 234-1234
+            Evelyn Jordan work Place   12
+            Evelyn   Jordan phone number 123-5678
+            Ike Deveron   work   Place   10
+            Ike Deveron phone number   234-1234
+jingjing@debian:~$ sed -e 's/Ellen Jones/Ellen Michaels/g' names.txt
+            Ellen Michaels work place 10
+            Ellen Michaels phone   number 234-5678
+            Mike Jackson   work Place 12
+            Mike Jackson phone number 234-1234
+            Evelyn Jordan work Place   12
+            Evelyn   Jordan phone number 123-5678
+            Ike Deveron   work   Place   10
+            Ike Deveron phone number   234-1234
+jingjing@debian:~$ sed -i 's/Ellen Jones/Ellen Michaels/g' names.txt
+jingjing@debian:~$ cat names.txt
+            Ellen Michaels work place 10
+            Ellen Michaels phone   number 234-5678
+            Mike Jackson   work Place 12
+            Mike Jackson phone number 234-1234
+            Evelyn Jordan work Place   12
+            Evelyn   Jordan phone number 123-5678
+            Ike Deveron   work   Place   10
+            Ike Deveron phone number   234-1234
+
+
+# End of file

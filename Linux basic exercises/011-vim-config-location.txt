@@ -1,0 +1,20 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-01-14
+
+# Answer to exercise "1.1 VIM configuration location"
+
+# Problem: Where is the vim(1) configuration file located?
+
+
+~/.vimrc
+
+
+# Vim can be configured system wide (globally) via the /etc/vim/vimrc.local file on Ubuntu/Debian based operating systems. 
+
+# Vim's user-specific configuration file is located in the HOME directory.
+# (touch ~/.vimrc) First create a .vimrc file in the HOME directory of the user that you want to configure Vim for.
+# (vim ~/.vimrc) Then add the required Vim configuration options(eg. set number) there.
+
+# https://linuxhint.com/configure_vim_vimrc/
+
+# End of file

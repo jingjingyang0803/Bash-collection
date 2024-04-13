@@ -1,0 +1,58 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.6 Find 7"
+
+# Problem: Give command to list all temporary files under "~/tmp" of type:
+#            *.tmp
+#            *.bup
+#            *.bak
+#            *~
+#            *#
+
+
+find ~/tmp -type f \( -name "*.tmp" -o -name "*.bup" -o -name "*.bak" -o -name "*~" -o -name "*#" \) -exec ls -la {} \;
+
+
+TESTING:
+jingjing@debian:~$ tree tmp
+tmp
+├── dir
+│   ├── file#
+│   ├── file~
+│   ├── file.bak
+│   └── file.pdf
+├── file.bup
+├── file.doc
+├── file.tmp
+└── file.txt
+
+1 directory, 8 files
+jingjing@debian:~$ find ~/tmp -type f \( -name "*.tmp" -o -name "*.bup" -o -name "*.bak" -o -name "*~" -o -name "*#" \)
+/home/jingjing/tmp/dir/file.bak
+/home/jingjing/tmp/dir/file#
+/home/jingjing/tmp/dir/file~
+/home/jingjing/tmp/file.tmp
+/home/jingjing/tmp/file.bup
+jingjing@debian:~$ find ~/tmp -type f \( -name "*.tmp" -o -name "*.bup" -o -name "*.bak" -o -name "*~" -o -name "*#" \) -exec ls -la {} \;
+-rw-r--r-- 1 jingjing jingjing 0 Mar  7 03:39 /home/jingjing/tmp/dir/file.bak
+-rw-r--r-- 1 jingjing jingjing 0 Mar  7 03:39 /home/jingjing/tmp/dir/file#
+-rw-r--r-- 1 jingjing jingjing 0 Mar  7 03:39 /home/jingjing/tmp/dir/file~
+-rw-r--r-- 1 jingjing jingjing 0 Mar  7 03:39 /home/jingjing/tmp/file.tmp
+-rw-r--r-- 1 jingjing jingjing 0 Mar  7 03:39 /home/jingjing/tmp/file.bup
+
+
+# Find also has relational operators AND OR NOT and GROUPING Find all txt or doc files. 
+# NOTE: put a backslash in front of the shell metacharacters like \( \) and semicolon \;
+
+# It is possible to run a specific command on file that has been found. The option -exec uses a peculiar syntax where the items are below. The COMMAND can be any command or combination of commands:
+# 
+#     $ find [options] -exec COMMAND {}  \;
+#                      |     ======= |   |
+#                      |             |   END marker
+#                      |             |
+#                      |             "found" file
+#                      |
+#                      BEGINNING marker    
+
+# End of file

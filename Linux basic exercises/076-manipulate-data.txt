@@ -1,0 +1,45 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "7.0 Output manipulation-7.6 Manipulate data 5"
+
+#        Give command to convert two files into column wise listing.
+#        You have two files *1.txt* and *2.txt* whose contents are shown below.
+#
+#            $ cat 1.txt
+#            First
+#            Second
+#            Third
+#
+#            $ cat 2.txt
+#            1
+#            2
+#            3
+#
+#        After some commands, you should display following result.
+#            First   1
+#            Second  2
+#            Third   3
+
+
+paste 1.txt 2.txt
+
+
+TESTING:
+jingjing@debian:~$ cat 1.txt
+First
+Second
+Third
+
+jingjing@debian:~$ cat 2.txt
+1
+2
+3
+
+jingjing@debian:~$ paste 1.txt 2.txt
+First   1
+Second  2
+Third   3
+
+
+# End of file

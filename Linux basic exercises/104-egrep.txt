@@ -1,0 +1,32 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "10.0 Egrep command-10.4 Egrep 4"
+
+#        Give command to search database for all phone *local* numbers that start with 6 or 5.
+
+
+egrep "\-(6|5)" data.txt
+
+
+TESTING:
+jingjing@debian:~$ cat data.txt
+            Adams, Fran     2-3876
+            Smith, Terry    7-7989
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+            Benson, Sam     4-5587
+            Brown, Robin    1-3745
+jingjing@debian:~$ egrep "\-(6|5)" data.txt
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+            Benson, Sam     4-5587
+
+
+#  1-3745
+#  | |
+#  | local number
+#  area code
+
+
+# End of file

@@ -1,0 +1,28 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-07
+
+# Answer to exercise "3.0 Meta character for pipe-3.3 Pipe 3"
+
+# Problem: Write command to save nano(1) manual page to file nano-manual.txt.
+#          Before saving, pipe the manual page content through col(1) to remove any special control characters.
+
+
+man nano | col -bx > nano-manual.txt
+
+
+Explanation:
+This command pipes the output of the man command for nano to the col command, which filters out any special control characters from the text. 
+The -b option in the col command specifies that only backspaces and newlines should be honored, and all other control characters should be removed.
+The filtered output is then redirected to the file nano-manual.txt using the > symbol. 
+This command will save a clean, filtered version of the manual page to the specified file.
+
+
+# Col reads from standard input and writes to standard output.
+#    -b: This option specifies that only backspaces and newlines should be honored, and all other control characters should be removed.
+#    -f: This option treats form feeds (ASCII code 12) as newlines, and prints each line separately.
+#    -l: This option treats line feeds (ASCII code 10) as newlines, and prints each line separately.
+#    -n: This option specifies that the output should not be split into lines, and all control characters should be removed.
+#    -x: This option treats carriage returns (ASCII code 13) as newlines, and prints each line separately.
+# https://linux.die.net/man/1/col
+
+# End of file

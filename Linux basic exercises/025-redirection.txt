@@ -1,0 +1,52 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-09
+
+# Answer to exercise "2.5 Redirection 5"
+
+# Explain how following command works:
+#      < /var/log/syslog less
+
+
+ This command is to view contents of the syslog log file one page at a time.
+
+ Identical:
+       less /var/log/syslog
+       less < /var/log/syslog
+
+Explaination:
+ "< /var/log/syslog" command takes the contents of the file /var/log/syslog and sends them as input to command "less".
+ "less" is to view the contents of a file or output from a command one page at a time. 
+ It is commonly used to view large text files or the output of long-running commands. 
+
+TESTING:
+root@debian:~# < /var/log/syslog less
+Mar  6 18:37:33 debian kernel: [    0.000000] Linux version 5.10.0-21-amd64 (debian-kernel@lists.debian.org) (gcc-10 (Debian 10.2.1-6) 10.2.1 20210110, GNU ld (GNU Binutils for Debian) 2.35.2) #1 SMP Debian 5.10.162-1 (2023-01-21)
+Mar  6 18:37:33 debian kernel: [    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.10.0-21-amd64 root=UUID=d13247ba-5162-4d60-ace1-f31e5a6f61d7 ro quiet
+Mar  6 18:37:33 debian kernel: [    0.000000] x86/fpu: x87 FPU will use FXSAVE
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-provided physical RAM map:
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000007ffeffff] usable
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x000000007fff0000-0x000000007fffffff] ACPI data
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] reserved
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
+Mar  6 18:37:33 debian kernel: [    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Mar  6 18:37:33 debian kernel: [    0.000000] NX (Execute Disable) protection: active
+Mar  6 18:37:33 debian kernel: [    0.000000] SMBIOS 2.5 present.
+Mar  6 18:37:33 debian kernel: [    0.000000] DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+Mar  6 18:37:33 debian kernel: [    0.000000] Hypervisor detected: KVM
+Mar  6 18:37:33 debian kernel: [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+Mar  6 18:37:33 debian kernel: [    0.000000] kvm-clock: cpu 0, msr 4b601001, primary cpu clock
+Mar  6 18:37:33 debian kernel: [    0.000001] kvm-clock: using sched offset of 5311653035707 cycles
+Mar  6 18:37:33 debian kernel: [    0.000004] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+Mar  6 18:37:33 debian kernel: [    0.000007] tsc: Detected 2399.998 MHz processor
+Mar  6 18:37:33 debian kernel: [    0.003804] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+Mar  6 18:37:33 debian kernel: [    0.003822] e820: remove [mem 0x000a0000-0x000fffff] usable
+:
+
+
+# One of the most important logs contained within /var/log is syslog. 
+# This particular log file logs everything except auth-related messages, so it can grow fairly large.
+
+# End of file

@@ -1,0 +1,35 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "7.0 Output manipulation-7.4 Manipulate data 3"
+
+#        See the ls(1) listing with option "-l".
+#
+#            cd ; ls -l .bash*
+#
+#            -rw-r--r--  1 user group  7311 Aug 28 10:38 .bash_history
+#            -rw-r--r--  1 user group  2311 Aug 28 10:38 .bash_profile
+#            -rw-r--r--  1 user group   311 Aug 28 10:38 .bashrc
+#
+#        Give command to extract files sizes from the listing:
+#
+#            7311
+#            2311
+#            311
+
+
+ls -l .bash* | awk '{print $5}'
+
+
+TESTING:
+jingjing@debian:~$ ls -l .bash*
+-rw------- 1 jingjing jingjing 2286 Mar 10 01:47 .bash_history
+-rw-r--r-- 1 jingjing jingjing  220 Mar  6 18:34 .bash_logout
+-rw-r--r-- 1 jingjing jingjing 3526 Mar  6 18:34 .bashrc
+jingjing@debian:~$ ls -l .bash* | awk '{print $5}'
+2286
+220
+3526
+
+
+# End of file

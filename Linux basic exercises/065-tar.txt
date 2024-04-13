@@ -1,0 +1,31 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-02
+
+# Answer to exercise "6.0 Archiving file-6.5 Tar 3"
+
+# Problem: Give command to extract the "package.tar.gz" under "/tmp" directory.
+
+
+tar -zxvf ~/package.tar.gz
+
+
+TESTING:
+jingjing@debian:~$ tar -zxvf ~/package.tar.gz
+tmp/
+tmp/dir1/
+tmp/dir1/1.1st
+tmp/dir1/dir2/
+tmp/dir1/dir2/here/
+tmp/dir1/dir2/here/1.tmp
+tmp/dir1/dir2/here/2.tmp
+tmp/dir1/dir2/2.1st
+tmp/dir1/dir2/1.txt
+tmp/dir1/2.txt
+
+
+# -z        gzip compress support (GNU tar only)
+# -x        extract
+# -v        Used with the t option, provides detailed information about the files on the tape. 
+# -f NAME   Indicates the tape device.
+# -C        Specify a different directory other than the current working directory.
+# End of file

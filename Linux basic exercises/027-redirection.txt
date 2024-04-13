@@ -1,0 +1,71 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-09
+
+# Answer to exercise "2.7 Redirection 7"
+
+# Problem: Type this command in full, what does it do?
+#            cat file << EOF 1> file2
+#            > hello
+#            > EOF
+
+
+--------------Explanation--------------------------------------
+ If cat(1) is passed to an argument, it assumes the argument is the name of the file (or files if there are multiple arguments) to print. 
+ If cat receives no arguments, it reads the stdin.
+ 
+ Thus, `cat file << EOF 1> file2` = `cat file 1> file2`
+
+ This command will create a file named "file2" in the current directory, 
+ and write the content of file "file" to it.
+ If "file" is empty, then after the command, "file2" is empty as well.
+
+ It doesn't matter what we write to the in-line redirection here, because they would not be redirected to the `cat` command at all.
+
+
+--------------TESTING------------------------------------------
+jingjing@debian:~$ cat file << EOF 1> file2
+> hello
+> EOF
+cat: file: No such file or directory
+
+jingjing@debian:~$ touch file
+jingjing@debian:~$ cat file << EOF 1> file2
+> hello
+> EOF
+jingjing@debian:~$ cat file
+jingjing@debian:~$ cat file2
+
+jingjing@debian:~$ vim file
+jingjing@debian:~$ cat file
+ original content of file
+jingjing@debian:~$ cat file << EOF
+> hello
+> EOF
+ original content of file
+jingjing@debian:~$ cat file
+ original content of file
+jingjing@debian:~$ cat file << EOF 1> file2
+> hello
+> EOF
+jingjing@debian:~$ cat file
+ original content of file
+jingjing@debian:~$ cat file2
+ original content of file
+
+
+--------------HERE documents (in-line redirection)-------------
+jingjing@debian:~$ cat << 'EOF'
+> hello
+> EOF
+hello
+jingjing@debian:~$ cat << "EOF"
+> hello
+> EOF
+hello
+jingjing@debian:~$ cat << EOF
+> hello
+> EOF
+hello
+
+
+# End of file

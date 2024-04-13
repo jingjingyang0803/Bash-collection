@@ -1,0 +1,19 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "8.0 File globbing-8.6 File glob 6"
+
+#        Give command to List all files that don't have a number in second and in a fourth character.
+
+
+ls ?[!0-9]?[!0-9]*
+
+
+TESTING: 
+jingjing@debian:~/demo$ ls
+1a3b  a2bc  abc  abc4  abcd  abcde
+jingjing@debian:~/demo$ ls ?[!0-9]?[!0-9]*
+1a3b  abcd  abcde
+
+
+# End of file

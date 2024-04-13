@@ -1,0 +1,31 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "10.0 Egrep command-10.1 Egrep 1"
+
+#        Give command to search all *phone* numbers that start with number 4.
+
+
+egrep "[a-zA-Z][[:space:]]+4" data.txt
+
+
+TESTING:
+jingjing@debian:~$ nano data.txt
+jingjing@debian:~$ cat data.txt
+            Adams, Fran     2-3876
+            Smith, Terry    7-7989
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+            Benson, Sam     4-5587
+            Brown, Robin    1-3745
+jingjing@debian:~$ egrep "[a-zA-Z][[:space:]]+4" data.txt
+            StClair, Pat    4-6122
+            Benson, Sam     4-5587
+jingjing@debian:~$ egrep "[a-zA-Z] +4" data.txt
+            StClair, Pat    4-6122
+            Benson, Sam     4-5587
+
+
+# [:space:]       whitespace = space and tab characters
+
+# End of file

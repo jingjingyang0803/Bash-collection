@@ -1,0 +1,21 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "8.0 File globbing-8.4 File glob 4"
+
+#       Give command to use only ONE globbing argument to ls(1) command to list all spelling of *.jpg, *.Jpg, *.JPG etc.
+#       You may only use one argument for the ls(1) command: ls <one argument>
+#       Multiple arguments are not accepted: ls *.jpg *.Jpg *.JPG ...
+
+
+ls *.[jJ][pP][gG]
+
+
+TESTING:
+jingjing@debian:~/demo$ ls
+1.jpg  2.Jpg  3.JPG  4.png
+jingjing@debian:~/demo$ ls *.[jJ][pP][gG]
+1.jpg  2.Jpg  3.JPG
+
+
+# End of file

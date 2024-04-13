@@ -1,0 +1,48 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-07
+
+# Answer to exercise "4.0 Meta character for command substitution---4.2 Meta character 2"
+
+# Problem: Write one "echo" command to display current time. 
+#          No variables can be used. See also date(1).
+# 	       Time is HH:MM:SS
+
+
+---12 Hour Time---
+echo "Time is $(date +"%I:%M:%S")"
+echo "Time is $(date | cut -d" " -f 5)"
+echo "Time is $(date | cut --delimiter=" " --fields=5)"
+
+---24 Hour Time---
+echo "Time is $(date +%T)"
+echo "Time is $(date +"%H:%M:%S")"
+echo "Time is $(date | awk '{print $5}')"
+
+
+TESTING:
+jingjing@debian:~$ date
+Mon 13 Mar 2023 12:25:09 AM EET
+jingjing@debian:~$ echo "Time is $(date +"%I:%M:%S")"
+Time is 12:25:14
+jingjing@debian:~$ echo "Time is $(date | cut -d" " -f 5)"
+Time is 12:25:20
+jingjing@debian:~$ echo "Time is $(date | cut --delimiter=" " --fields=5)"
+Time is 12:25:24
+jingjing@debian:~$ echo "Time is $(date +%T)"
+Time is 00:25:31
+jingjing@debian:~$ echo "Time is $(date +"%H:%M:%S")"
+Time is 00:25:37
+jingjing@debian:~$ echo "Time is $(date | awk '{print $5}')"
+Time is 01:56:19
+
+
+
+# To format the date command’s output, you can use control characters preceded by a + sign. 
+# Format controls begin with the % symbol and are substituted by their current values.
+# %H – Hour (00-23)
+# %I – Hour (01-12)
+# %M – Minute (00-59)
+# %S – Second (00-60)
+# https://phoenixnap.com/kb/linux-date-command
+
+# End of file

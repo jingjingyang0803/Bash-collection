@@ -1,0 +1,38 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "10.0 Egrep command-10.3 Egrep 3"
+
+#        Give command to search database for all people that have "a" in their *first* name.
+
+
+assume that all *first* names are started with a uppercase letter and followed by several lowercase letters:
+       egrep ", [A-Z][a-z]*a" data.txt
+
+assume that *first* names are mixed with uppercase and lowercase letters:
+       egrep ", [a-zA-Z]*a" data.txt
+
+
+TESTING:
+jingjing@debian:~$ cat data.txt
+            Adams, Fran     2-3876
+            Smith, Terry    7-7989
+            StClair, Pat    4-6122
+            Stair, Chris    5-5972
+            Benson, Sam     4-5587
+            Brown, Robin    1-3745
+jingjing@debian:~$ egrep ", [A-Z][a-z]*a" data.txt
+            Adams, Fran     2-3876
+            StClair, Pat    4-6122
+            Benson, Sam     4-5587
+jingjing@debian:~$ egrep ", [a-zA-Z]*a" data.txt
+            Adams, Fran     2-3876
+            StClaiR, Pat    4-6122
+            Benson, Sam     4-5587
+
+
+# *       0 or more. That is, a element is NOT required or MORE
+# +       1 or more. That is, a element is REQUIRED 
+
+
+# End of file

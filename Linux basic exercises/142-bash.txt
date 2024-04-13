@@ -1,0 +1,35 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-11
+
+# Answer to exercise "14.0 User commands-14.2 Bash 3"
+
+#      ** User commands can be added to shell startup files
+#      ** Bash: ~/.bashrc and Zsh (Mac): ~/.zshrc
+#         Write a user command that displays only files.
+
+
+alias lsf='ls -p | grep -v /'
+or
+alias lsf='ls -F | grep -v /'
+
+
+Explanation:
+  This command will use the ls command to list all the files and directories in the current directory, 
+  and the -p option will append a slash to the end of directory names to distinguish them from files. 
+  The output will then be piped to grep, which will filter out any lines containing a slash (which are directories) 
+  using the -v option. This will leave only the names of files, which will be displayed on the screen.
+
+
+TESTING:
+jingjing@debian:~$ ls
+ Desktop   Documents   Downloads   file2.doc   file.txt   Music   Pictures   Public   Templates   tmp   Videos
+jingjing@debian:~$ ls -p | grep -v /
+file2.doc
+file.txt
+
+jingjing@debian:~$ lsf
+file2.doc
+file.txt
+
+
+# End of file

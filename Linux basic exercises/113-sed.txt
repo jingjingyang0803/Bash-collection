@@ -1,0 +1,45 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "11.0 Sed command-11.3 Sed 3"
+
+#        Give command to change Ike's phone number to "234-0123". 
+#        NOTE: do not touch Mike's phone number.
+
+
+sed -i '/Ike/s/234-1234/234-0123/' names.txt
+
+
+TESTING:
+jingjing@debian:~$ cat names2.txt > names.txt
+jingjing@debian:~$ cat names.txt
+            Ellen Jones work place 10
+            Ellen Jones phone   number 234-5678
+            Mike Jackson   work Place 12
+            Mike Jackson phone number 234-1234
+            Evelyn Jordan work Place   12
+            Evelyn   Jordan phone number 123-5678
+            Ike Deveron   work   Place   10
+            Ike Deveron phone number   234-1234
+jingjing@debian:~$ sed -e '/Ike/s/234-1234/234-0123/' names.txt
+            Jones Ellen work place 10
+            Jones Ellen phone   number 234-5678
+            Jackson Mike   work Place 12
+            Jackson Mike phone number 234-1234
+            Jordan Evelyn work Place   12
+            Jordan Evelyn phone number 123-5678
+            Deveron Ike   work   Place   10
+            Deveron Ike phone number   234-0123
+jingjing@debian:~$ sed -i '/Ike/s/234-1234/234-0123/' names.txt
+jingjing@debian:~$ cat names.txt
+            Jones Ellen work place 10
+            Jones Ellen phone   number 234-5678
+            Jackson Mike   work Place 12
+            Jackson Mike phone number 234-1234
+            Jordan Evelyn work Place   12
+            Jordan Evelyn phone number 123-5678
+            Deveron Ike   work   Place   10
+            Deveron Ike phone number   234-0123
+
+
+# End of file

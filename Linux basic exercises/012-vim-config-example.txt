@@ -1,0 +1,31 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-01-14
+
+# Answer to exercise "1.2 VIM configuration exmaple"
+
+# Problem: Write followiing configuration setting to vim(1) configuration file explain each setting in a comment.
+#          An example: set showmode  " show mode indicators like: -- INSERT --
+#          Define these settings:
+
+
+set ruler  "Always show cursor position.
+set nojoinspaces  " Do not insert two spaces after a '.', '?' and '!' with a join command.
+set showcmd  " Show partial command you type in the last line of the screen(status line).
+set showmatch  " Show matching words during a search. Show matching brackets.
+set incsearch  "Incremental search that shows partial matches.
+set ignorecase  " Do case insensitive matching.
+set smartcase  " Automatically switch search to case-sensitive when search query contains an uppercase letter.
+set nobackup  " Do not save backup files.
+set autoindent  " Enable automatic indentation to automatically insert tabs or spaces.
+set shiftwidth=4  " When shifting, indent using four spaces.
+set softtabstop=4  " A <Tab> counts for 4 spaces while performing editing operations.
+set paste  " Turn off auto indent fot the pasted lines.
+set nolist  " Don't show invisible characters.
+
+
+# https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+# https://www.shortcutfoo.com/blog/top-50-vim-configuration-options/
+# https://www.stat.rice.edu/~helpdesk/dotfiles/.vimrc.html
+# https://www.atmos.albany.edu/daes/atmclasses/atm350/vi_cheat_sheet.pdf
+#
+# End of file

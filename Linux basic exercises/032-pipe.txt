@@ -1,0 +1,24 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-07
+
+# Answer to exercise "3.0 Meta character for pipe-3.2 Pipe 2"
+
+# Problem: Explain what the following command does:
+#            echo "1 2 3" | cut -d" " -f2
+
+
+The command seperates the line "1 2 3" by space and prints the second field, which is "2".
+
+
+TESTING:
+jingjing@debian:~$ echo "1 2 3" | cut -d" " -f2
+2
+
+
+# The cut command in UNIX is a command for cutting out the sections from each line of files 
+# and writing the result to standard output. 
+# cut     slices a line and extracts the text. 
+# -d" "   using space as field delimiter
+# https://www.geeksforgeeks.org/cut-command-linux-examples/
+
+# End of file

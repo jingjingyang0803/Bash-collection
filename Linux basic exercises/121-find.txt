@@ -1,0 +1,32 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.1 Find 1"
+
+# Problem: Give command to find all "*.txt" files under directory "~/tmp".
+
+
+find ~/tmp -type f -name "*.txt"
+
+
+TESTING:
+jingjing@debian:~$ tree tmp
+tmp
+├── dir1
+│   ├── 1.1st
+│   ├── 2.txt
+│   └── dir2
+│       ├── 1.txt
+│       ├── 2.1st
+│       └── here
+│           ├── 1.tmp
+│           └── 2.tmp
+└── test.txt
+
+4 directories, 6 files
+jingjing@debian:~$ find ~/tmp -type f -name "*.txt"
+/home/jingjing/tmp/dir1/dir2/1.txt
+/home/jingjing/tmp/dir1/2.txt
+
+
+# End of file

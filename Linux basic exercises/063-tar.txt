@@ -1,0 +1,50 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-02
+
+# Answer to exercise "6.0 Archiving file-6.3 Tar 1"
+
+# Problem: Give command to create a tar package "package.tar.gz" by backing up everything under "~/tmp/" and its sub directories.
+#          Compress tar packet using gzip(1).
+#          NOTE: Make sure the TAR package does not have absolute pathslike "/home/user/tmp/..."
+
+
+cd ; tar -zcvf ~/package.tar.gz tmp/
+
+
+TESTING:
+jingjing@debian:~$ cd ; mkdir -p tmp/dir1/dir2/here; cd tmp/dir1; touch 1.1st 2.txt; cd dir2; touch 1.txt 2.1st; cd here; touch 1.tmp 2.tmp; cd ~/tmp/dir1; tree
+.
+├── 1.1st
+├── 2.txt
+└── dir2
+    ├── 1.txt
+    ├── 2.1st
+    └── here
+        ├── 1.tmp
+        └── 2.tmp
+
+2 directories, 6 files
+jingjing@debian:~/tmp/dir1$ cd ; tar -zcvf ~/package.tar.gz tmp/
+tmp/
+tmp/dir1/
+tmp/dir1/1.1st
+tmp/dir1/dir2/
+tmp/dir1/dir2/here/
+tmp/dir1/dir2/here/1.tmp
+tmp/dir1/dir2/here/2.tmp
+tmp/dir1/dir2/2.1st
+tmp/dir1/dir2/1.txt
+tmp/dir1/2.txt
+jingjing@debian:~$ ls -l package.tar.gz
+-rw-r--r-- 1 jingjing jingjing 250 2023-03-13 01:43 package.tar.gz
+
+
+#  In recursive mode, you must not create archive to the same directory which is being tarred up, 
+#  because then the tar would include "itself".
+
+#  -z        gzip compress support (GNU tar only)
+#  -c        create new archive
+#  -v        verbose
+#  -f NAME   use archive file NAME
+
+# End of file

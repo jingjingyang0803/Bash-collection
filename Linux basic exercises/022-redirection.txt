@@ -1,0 +1,28 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-08
+
+# Answer to exercise "2.2 Redirection 2"
+
+# Problem: Give command to write output of non-existing command "qwerty" to an error log file: "error.log".
+#          Open the file with command: cat error.log
+#          After the command the file should contain: bash: qwerty: command not found
+
+
+Option one: 
+            qwerty 2> error.log
+Option two: 
+            qwerty &> error.log
+
+
+TESTING:
+jingjing@debian:~$ qwerty 2> error.log
+jingjing@debian:~$ cat error.log
+-bash: qwerty: command not found
+jingjing@debian:~$ qwerty &> error.log
+jingjing@debian:~$ cat error.log
+-bash: qwerty: command not found
+
+
+#  &> means both standard output ( 1> ) and standard error( 2> )
+
+# End of file

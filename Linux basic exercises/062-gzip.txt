@@ -1,0 +1,32 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-01
+
+# Answer to exercise "6.0 Archiving file-6.2 Gzip1 2"
+
+# Problem: Give command to decompress "file.txt.gz" done in previous exercise.
+
+
+option one---
+             gzip -d file.txt.gz
+option two---
+             gunzip file.txt.gz
+
+TESTING:
+jingjing@debian:~/tmp$ ls -l
+total 8
+-rw-r--r-- 1 jingjing jingjing 1819 Mar  7 00:26 file2.txt.gz
+-rw-r--r-- 1 jingjing jingjing 1818 Mar  7 00:27 file.txt.gz
+jingjing@debian:~/tmp$ gzip -d file.txt.gz
+jingjing@debian:~/tmp$ gunzip file2.txt.gz
+jingjing@debian:~/tmp$ ls -l
+total 1176
+-rw-r--r-- 1 jingjing jingjing 599205 Mar  7 00:26 file2.txt
+-rw-r--r-- 1 jingjing jingjing 599205 Mar  7 00:27 file.txt
+
+
+# -d      decompress (open the file)
+# gunzip(1) takes a list of files on its command line and replaces each file whose name ends with .gz, .z, .Z 
+# and which begins with the correct magic number with an uncompressed file without the original extension. 
+# It also recognizes the special extensions .tgz and .taz as shorthands for .tar.gz and .tar.Z respectively.
+
+# End of file

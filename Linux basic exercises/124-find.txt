@@ -1,0 +1,43 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.4 Find 4"
+
+# Problem: Give command to find all *directories* that contain a character "t" and vowel "a"; in this character order.
+#          There can be anything between or around "t" and "a" characters.
+
+
+find -type d -name "*t*a*"
+
+
+TESTING:
+jingjing@debian:~$ find -type d -name "*t*a*"
+./.cache/tracker
+./.cache/evolution/addressbook/trash
+./.cache/evolution/calendar/trash
+./.cache/evolution/mail/trash
+./.cache/evolution/sources/trash
+./.cache/evolution/tasks
+./.cache/evolution/tasks/trash
+./.cache/evolution/memos/trash
+./.cache/gnome-software
+./.cache/gnome-software/appstream
+./.cache/thumbnails
+./.cache/gstreamer-1.0
+./.cache/folks/avatars
+./.local/share/tracker
+./.local/share/tracker/data
+./.local/share/gnome-settings-daemon
+./.local/share/evolution/addressbook/trash
+./.local/share/evolution/calendar/trash
+./.local/share/evolution/mail/trash
+./.local/share/evolution/tasks
+./.local/share/evolution/tasks/trash
+./.local/share/evolution/memos/trash
+./.local/share/flatpak
+./.local/share/gvfs-metadata
+
+
+# Add the type d option to locate directories only.
+
+# End of file

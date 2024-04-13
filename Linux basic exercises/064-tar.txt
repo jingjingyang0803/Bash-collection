@@ -1,0 +1,53 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-02
+
+# Answer to exercise "6.0 Archiving file-6.4 Tar 2"
+
+# Problem: Give command to list content of tar package made in previous exercise: "package.tar.gz"
+#          Attach the output of the listing after the command.
+#          NOTE: Make sure the TAR package does not have absolute paths like "/home/user/tmp/...". 
+#          Otherwise you did not make correct package in previous step. All the entries should read like:
+#                tmp/
+#                tmp/dir1/
+#                tmp/dir1/1.lst
+#                tmp/dir1/2.txt
+#                ...
+
+
+tar -tf ~/package.tar.gz
+
+
+TESTING:
+jingjing@debian:~$ tar -tf ~/package.tar.gz
+tmp/
+tmp/dir1/
+tmp/dir1/1.1st
+tmp/dir1/dir2/
+tmp/dir1/dir2/here/
+tmp/dir1/dir2/here/1.tmp
+tmp/dir1/dir2/here/2.tmp
+tmp/dir1/dir2/2.1st
+tmp/dir1/dir2/1.txt
+tmp/dir1/2.txt
+jingjing@debian:~$ tar -tvf ~/package.tar.gz
+drwxr-xr-x jingjing/jingjing 0 2023-03-13 01:42 tmp/
+drwxr-xr-x jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/
+-rw-r--r-- jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/1.1st
+drwxr-xr-x jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/dir2/
+drwxr-xr-x jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/dir2/here/
+-rw-r--r-- jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/dir2/here/1.tmp
+-rw-r--r-- jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/dir2/here/2.tmp
+-rw-r--r-- jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/dir2/2.1st
+-rw-r--r-- jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/dir2/1.txt
+-rw-r--r-- jingjing/jingjing 0 2023-03-13 01:42 tmp/dir1/2.txt
+
+
+# To see the contents of the compressed tar package, use the -t switch.
+# Be very careful that the -f and the stdin marker dash (-) are the last characters.
+
+# -t        Lists the table of contents for the files on the tape. 
+# -v        Used with the t option, provides detailed information about the files on the tape. 
+# -f NAME   Indicates the tape device.
+
+
+# End of file

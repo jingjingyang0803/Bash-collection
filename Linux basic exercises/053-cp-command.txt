@@ -1,0 +1,22 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-01
+
+# Answer to exercise "5.0 Shell basic commands---5.3 The cp command 1"
+
+# Problem: Quote explantions for the following options of cp(1) command: -v  -u  -p  -r
+
+
+ -v     explain what is being done.
+
+ -u     copy only when the SOURCE file is newer than the destination file 
+         or when the destination file is missing.
+
+ -p     preserve the specified attributes (default: mode,ownership,timestamps), 
+         if possible additional attributes: context, links, xattr, all.
+
+ -r     copy directories recursively
+
+
+# cp --help | more
+
+# End of file

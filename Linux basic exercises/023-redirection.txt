@@ -1,0 +1,31 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-08
+
+# Answer to exercise "2.3 Redirection 3"
+
+# Explain why nothing appears in file "2":  echo 2 2> 2
+
+
+The file descriptor for standard error is 2.
+Using “2>” we re-direct the error output to a file named “2”.
+Howerver, there is no error for command "echo 2", so file "2" has no contents to show.
+
+
+Instead, the file descriptor for standard output is 1.
+If we give command :echo 2 1> 2, file "2" would have : 2
+If we give command :echo 123456 1> 2, file "2" would have : 123456
+
+
+TESTING:
+root@debian:~# echo 2 2> 2
+2
+root@debian:~# cat 2
+root@debian:~# echo 2 1> 2
+root@debian:~# cat 2
+2
+
+
+# If we do not want a file to be overwritten but want to add more content to an existing file, then we should use ‘>>‘ operator.
+# to learn more: https://phoenixnap.com/kb/echo-command-linux
+
+# End of file

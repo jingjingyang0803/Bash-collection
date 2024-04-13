@@ -1,0 +1,40 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "7.0 Output manipulation-7.5 Manipulate data 4"
+
+#        Give command to display content of a file with line numbers.
+#        Make sure *every* line is numbered, even the blank lines.
+#        An example:
+#
+#            one
+#
+#            two
+#            three
+#
+#        Output after some command:
+#
+#            1  one
+#            2
+#            3  two
+#            4  three
+
+
+cat -n <file name>
+
+
+TESTING:
+jingjing@debian:~$ nano file.txt
+jingjing@debian:~$ cat file.txt
+one
+
+two
+three
+jingjing@debian:~$ cat -n file.txt
+     1  one
+     2
+     3  two
+     4  three
+
+
+# End of file

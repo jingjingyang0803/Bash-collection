@@ -1,0 +1,32 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "7.0 Output manipulation-7.1 Extract information"
+
+# Problem: See output of the date(1). Give command to extract YYYY part.
+
+
+date | cut -d " " -f4
+
+
+TESTING:
+jingjing@debian:~$ date
+Thu 09 Mar 2023 01:11:55 AM EET
+jingjing@debian:~$ date | cut -d " " -f4
+2023
+
+
+#        In these exercises, consult manual pages for commands:
+#            nl
+#            cut
+#            awk
+#            sort
+#            paste
+
+# cut --help
+# -d, --delimiter=DELIM   use DELIM instead of TAB for field delimiter
+# -f, --fields=LIST       select only these fields;  also print any line
+#                           that contains no delimiter character, unless
+#                           the -s option is specified
+
+# End of file

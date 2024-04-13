@@ -1,0 +1,82 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-08
+
+# Answer to exercise "2.4 Redirection 4"
+
+# Which of the command saves an error message to a separate file?
+#            A. cat qwerty   1> file.tmp   2> error.log
+#            B. cat qwerty   2> error.log  1> file.tmp
+#            C. cat < qwerty 2> error.log  1> file.tmp
+
+
+A and B
+
+
+-----------------Explanation-------------------
+ If cat(1) is passed to an argument, it assumes the argument is the name of the file (or files if there are multiple arguments) to print. 
+ If cat receives no arguments, it reads the stdin.
+
+ In our case, we assume that file "qwerty" does not exist in the currenty directory, then
+ command `cat qwerty` will generate an error message from cat program---"cat: qwerty: No such file or directory".
+ command `cat < qwerty` will generate an error message from bash program---"-bash: qwerty: No such file or directory".
+  
+ `2> error.log` directs the standard error output of the cat command to a file named "error.log".
+ `1> file.tmp` directs the standard output of the cat command to a file named "file.tmp".    
+ Therefore, Option A and B both works. The orde does not matter.
+
+ However, Option C `cat < qwerty 2> error.log  1> file.tmp` will be interpurted at `cat < qwerty`,
+ the later part `2> error.log  1> file.tmp` will be ignored.
+ 
+
+
+-----------------TESTING---------------------
+
+------------order of`1>` and `2>` does not matter------------------
+jingjing@debian:~$ echo "hello" 1> file.txt 2> error.log
+jingjing@debian:~$ cat file.txt
+hello
+jingjing@debian:~$ cat error.log
+jingjing@debian:~$ echo "hello" 2> error.log 1>file.txt
+jingjing@debian:~$ cat file.txt
+hello
+jingjing@debian:~$ cat error.log
+
+-----------`cat` result of a none-existing file----------
+jingjing@debian:~$ cat qwerty
+cat: qwerty: No such file or directory
+jingjing@debian:~$ cat < qwerty
+-bash: qwerty: No such file or directory
+
+----------varify result of A options---------------------
+jingjing@debian:~/test$ ls
+jingjing@debian:~/test$ cat qwerty   1> file.tmp   2> error.log
+jingjing@debian:~/test$ ls
+error.log  file.tmp
+jingjing@debian:~/test$ cat error.log
+cat: qwerty: No such file or directory
+jingjing@debian:~/test$ cat file.tmp
+
+----------varify result of B options---------------------
+jingjing@debian:~/test$ rm file.tmp error.log
+jingjing@debian:~/test$ cat qwerty   2> error.log  1> file.tmp
+jingjing@debian:~/test$ ls
+error.log  file.tmp
+jingjing@debian:~/test$ cat error.log
+cat: qwerty: No such file or directory
+jingjing@debian:~/test$ cat file.tmp
+
+----------varify result of C options---------------------
+jingjing@debian:~/test$ rm file.tmp error.log
+jingjing@debian:~/test$ cat < qwerty 2> error.log  1> file.tmp
+-bash: qwerty: No such file or directory
+jingjing@debian:~/test$ ls
+jingjing@debian:~/test$
+
+
+# The ‘<‘ symbol is used for input(STDIN) redirection.
+# The ‘>‘ symbol is used for output(STDOUT) redirection
+# The file descriptor for standard output is 1.
+# The file descriptor for standard error is 2.
+# https://www.thegeeksearch.com/how-to-save-output-or-errors-to-a-file-with-linux-shell-redirection/
+
+# End of file

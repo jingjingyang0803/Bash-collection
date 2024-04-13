@@ -1,0 +1,36 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-02
+
+# Answer to exercise "6.0 Archiving file-6.6 Tar 4"
+
+# Problem: Give commands to change the compression from gzip(1) to bzip2(1). 
+#          The end result should be file:  package.tar.bz2
+
+
+cd ; tar -jcvf ~/package.tar.bz2 tmp/
+
+
+TESTING:
+jingjing@debian:~$ cd ; tar -jcvf ~/package.tar.bz2 tmp/
+tmp/
+tmp/dir1/
+tmp/dir1/1.1st
+tmp/dir1/dir2/
+tmp/dir1/dir2/here/
+tmp/dir1/dir2/here/1.tmp
+tmp/dir1/dir2/here/2.tmp
+tmp/dir1/dir2/2.1st
+tmp/dir1/dir2/1.txt
+tmp/dir1/2.txt
+jingjing@debian:~$ ls -l package*
+-rw-r--r-- 1 jingjing jingjing 261 2023-03-13 01:47 package.tar.bz2
+-rw-r--r-- 1 jingjing jingjing 250 2023-03-13 01:43 package.tar.gz
+
+
+# to change the compression from bzip2(1) to gzip(1):
+jingjing@debian:~$ bzip2 -d package.tar.bz2
+jingjing@debian:~$ gzip --best package.tar
+jingjing@debian:~$ ls -l package*
+-rw-r--r-- 1 jingjing jingjing 253 Mar  7 00:50 package.tar.gz
+
+# End of file

@@ -1,0 +1,45 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-10
+
+# Answer to exercise "8.0 File globbing-8.1 File glob 1"
+
+#        Give command to list all files starting with big letters.
+
+ls [A-Z]*
+ls -l [A-Z]*
+ls [[:upper:]]*
+ls -l [[:upper:]]*
+
+option one---
+             find -type f -name "[A-Z]*"
+option two---
+             find -type f -name "[[:upper:]]*"
+
+
+TESTING:
+jingjing@debian:~/demo$ ls
+a  A  BB  bCd
+jingjing@debian:~/demo$ ls [A-Z]*
+A  BB
+jingjing@debian:~/demo$ ls [[:upper:]]*
+A  BB
+jingjing@debian:~/demo$ find -type f -name "[A-Z]*"
+./BB
+./A
+jingjing@debian:~/demo$ find -type f -name "[[:upper:]]*"
+./BB
+./A
+
+
+#            []      List of accepted characters.
+#            [!]     List of excluded characters (The opposite)
+#            ?       Single character (required)
+#            *       Any number of characters (zero or more)
+
+# Named class     Traditional character class (range)
+# ----------      -----------------------------------
+# [:upper:]       [A-Z]
+
+#      A-Z    =   [:upper:] 
+
+# End of file

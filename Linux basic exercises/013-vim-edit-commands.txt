@@ -1,0 +1,51 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-01-24
+
+# Answer to exercise "1.3 VIM commands"
+
+# Problem: After each (=), explain how the action is accomplished in the editor by using some key binding(s):
+
+
+beginning of line        = 0/^
+
+end of line              = $
+
+deleting a word          = daw
+# "w" moves to the next word.
+# "dw" deletes from the cursor position to the start of the next word.
+# "daw" deletes the word under the cursor and the space after it.
+# "dw" means "cut from here to next word". 
+# "de" means "cut from here to the end of the current word".
+
+deleting a line          = dd
+
+deleting a paragraph     =
+# option one---use "d{+d}" in normal mode:
+#           In Normal mode, "d{" deletes to the start of the paragraph, "d}" deletes to the end of the paragraph.
+# option two---use "ap+y" in visual mode: 
+#           In Visual mode, type "ap" to select the paragraph, then type "y" to cope the paragraph. 
+
+Go to beginning of file  = gg/1G
+
+Go to end of file        = G(Shift+g)
+
+Copying line(s)          = yy
+# to copy more lines starting from the current line:2yy,3yy,...
+
+Copying paragraph        = 
+# option one---use "ap" in visual mode: 
+#           In Visual mode, type "ap" to select the paragraph.
+# option two---use "[linenumber of first line],[linenumber of last line] co [linenumber to paste the paragraph]" in Execute mode
+#           for example, type "5,12 co 3" to copy the lines from 5th to 12th, and put those lines onto 3rd line.
+
+turn on/off line numbers = :set nu/:set nonu
+
+
+# NOTE: 
+#       Press the Esc key to be in the Normal mode. 
+#       Press i/a/o to be in the Insert mode.
+#       Press shift + v to be in the Visual mode. 
+#       Press colon (:) to get to Execute mode/Last Line mode.
+# to leran more: https://codeahoy.com/q/68/vim-faq
+
+# End of file

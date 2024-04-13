@@ -1,0 +1,36 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-01
+
+# Answer to exercise "6.0 Archiving file-6.1 Gzip1 1"
+
+# Problem: Give command to compress "file.txt" with gzip(1) using best possible compression.
+
+
+option one---
+             gzip -9 file.txt
+option two---
+             gzip --best file.txt
+
+TESTING:
+
+jingjing@debian:~/tmp$ ls -l
+total 1764
+-rw-r--r-- 1 jingjing jingjing 599205 Mar  7 00:26 file2.txt
+-rw-r--r-- 1 jingjing jingjing 599205 Mar  7 00:27 file3.txt
+-rw-r--r-- 1 jingjing jingjing 599205 Mar  7 00:27 file.txt
+jingjing@debian:~/tmp$ gzip -9 file.txt
+jingjing@debian:~/tmp$ gzip --best file2.txt
+jingjing@debian:~/tmp$ gzip -1 file3.txt
+jingjing@debian:~/tmp$ ls -l
+total 16
+-rw-r--r-- 1 jingjing jingjing 1819 Mar  7 00:26 file2.txt.gz
+-rw-r--r-- 1 jingjing jingjing 4596 Mar  7 00:27 file3.txt.gz
+-rw-r--r-- 1 jingjing jingjing 1818 Mar  7 00:27 file.txt.gz
+
+
+# gzip allows you to specify a range of compression levels, from 1 to 9. 
+# -1 or --fast means fastest compression speed with minimal compression ratio, 
+# -9 or --best indicates the slowest compression speed with maximum compression ratio. 
+# The default compression level is -6.
+
+# End of file

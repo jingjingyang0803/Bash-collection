@@ -1,0 +1,20 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-08
+
+# Answer to exercise "2.8 Redirection 8"
+
+# Problem: Write a single command to copy existing "file" into "file2" by using only command cat(1) and redirection.
+
+
+cat file 1> file2
+
+
+TESTING:
+jingjing@debian:~$ cat file
+  Hello! 2.8 Redirecion exercise
+jingjing@debian:~$ cat file 1> file2
+jingjing@debian:~$ cat file2
+  Hello! 2.8 Redirecion exercise
+
+
+# End of file

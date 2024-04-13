@@ -1,0 +1,68 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-02-09
+
+# Answer to exercise "5.0 Shell basic commands---5.4 The cp command 2"
+
+# Problem: Give command to make complete backup of all of "~/tmp" directory under "~/tmp.backup". 
+#          That is, the content of "~/tmp" and all its sub directories are recursively backed up.
+#
+#          The start situation:
+#            ~/tmp/
+#            |
+#            +- dir1/
+#               | 1.lst
+#               | 2.txt
+#               |
+#               +-- dir2/
+#                   | 1.txt
+#                   | 2.lst
+#                   ...
+#
+#          End situation after cp(1) command:
+#            ~/tmp.backup/
+#            |
+#            +- dir1/
+#               | 1.lst
+#               | 2.txt
+#               |
+#               +-- dir2/
+#                   | 1.txt
+#                   | 2.lst
+#                   ...
+
+
+cp -r ~/tmp ~/tmp.backup
+
+
+TESTING:
+jingjing@debian:~/tmp$ tree
+.
+└── dir1
+    ├── 1.1st
+    ├── 2.txt
+    └── dir2
+        ├── 1.txt
+        ├── 2.1st
+        └── here
+            ├── 1.tmp
+            └── 2.tmp
+
+3 directories, 6 files
+jingjing@debian:~$ cp -r tmp tmp.backup
+jingjing@debian:~$ cd tmp.backup/
+jingjing@debian:~/tmp.backup$ tree
+.
+└── dir1
+    ├── 1.1st
+    ├── 2.txt
+    └── dir2
+        ├── 1.txt
+        ├── 2.1st
+        └── here
+            ├── 1.tmp
+            └── 2.tmp
+
+3 directories, 6 files
+
+
+# End of file

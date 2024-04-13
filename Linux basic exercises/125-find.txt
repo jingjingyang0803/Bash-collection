@@ -1,0 +1,16 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.5 Find 5"
+
+# Problem: Give command to find all files under "~/tmp" directory that have been modified 2 days ago.
+
+
+find ~/tmp type f -mtime +2
+
+
+# -mtime +6 -mtime -15             modified between 6 and 15 days ago
+# -atime 8                         accessed exactly 10 days ago
+# -amin -10                        accessed within the last 10 minutes
+
+# End of file

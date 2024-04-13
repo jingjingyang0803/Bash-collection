@@ -1,0 +1,21 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-06
+
+# Answer to exercise "12.0 Find command-12.3 Find 3"
+
+# Problem: Give command to find all files under "~/tmp" whose size is bigger than 10 bytes.
+
+
+find ~/tmp -type f -size +10c
+
+
+# For files only, use the type f switch.
+
+# You can find all files or directories that are smaller, equal or greater than a certain size, within a certain range or empty.
+# Size options include:
+#                      c – bytes
+#                      k – kilobytes
+#                      M – Megabytes
+#                      G – Gigabytes
+
+# End of file

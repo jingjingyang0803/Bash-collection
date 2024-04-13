@@ -1,0 +1,102 @@
+# Author: Jingjing Yang <jingjing.yang@tuni.fi>
+# Date: 2023-03-01
+
+# Answer to exercise "5.0 Shell basic commands---5.2 Move files"
+
+# Problem:Give command to move file as indicated. 
+#
+#         Start situation under "~/tmp"
+#                dir1/
+#                | 1.txt
+#                | 2.txt
+#                |
+#                +-- dir2/
+#                    | 1.tmp
+#                    | 2.tmp
+#                    |
+#                    +-- here/
+#                        +- 1.lst
+#                        +- 2.lst
+#
+#         End situation in "~/tmp/tmp2"
+#                dir1/
+#                | 1.lst
+#                | 2.txt
+#                |
+#                +-- dir2/
+#                    | 1.txt
+#                    | 2.lst
+#                    |
+#                    +-- here/
+#                         1.tmp
+#                         2.tmp
+
+
+1) create start situation
+cd ~/tmp; mkdir -p dir1/dir2/here; cd dir1; touch 1.txt 2.txt; cd dir2; touch 1.tmp 2.tmp; cd here; touch 1.1st 2.1st; cd ~/tmp/dir1; tree
+2) create end situation
+~/tmp/dir1$ mv 1.txt dir2/; mv dir2/*tmp dir2/here/; mv dir2/here/1.1st ./; mv dir2/here/2.1st dir2/;mkdir ~/tmp/tmp2; mv ~/tm p/dir1 ~/tmp/tmp2/dir1; tree
+
+
+TESTING:
+jingjing@debian:~$ cd ~/tmp; mkdir -p dir1/dir2/here; cd dir1; touch 1.txt 2.txt; cd dir2; touch 1.tmp 2.tmp; cd here; touch 1.1st 2.1st; cd ~/tmp/dir1; tree
+├── 1.txt
+├── 2.txt
+└── dir2
+    ├── 1.tmp
+    ├── 2.tmp
+    └── here
+        ├── 1.1st
+        └── 2.1st
+
+2 directories, 6 files
+jingjing@debian:~/tmp/dir1$ mv 1.txt dir2/; mv dir2/*tmp dir2/here/; mv dir2/here/1.1st ./; mv dir2/here/2.1st dir2/;mkdir ~/tmp/tmp2; mv ~/tm p/dir1 ~/tmp/tmp2/dir1; tree
+.
+├── 1.1st
+├── 2.txt
+└── dir2
+    ├── 1.txt
+    ├── 2.1st
+    └── here
+        ├── 1.tmp
+        └── 2.tmp
+
+2 directories, 6 files
+jingjing@debian:~/tmp/dir1$
+---------------------------------------------------------------
+jingjing@debian:~/tmp$ tree
+.
+└── dir1
+    ├── 1.txt
+    ├── 2.txt
+    └── dir2
+        ├── 1.tmp
+        ├── 2.tmp
+        └── here
+            ├── 1.1st
+            └── 2.1st
+
+5 directories, 4 files
+jingjing@debian:~/tmp$ mv dir1/1.txt dir1/dir2/
+jingjing@debian:~/tmp$ mv dir1/dir2/*tmp dir1/dir2/here/
+jingjing@debian:~/tmp$ mv dir1/dir2/here/1.1st/ dir1/
+jingjing@debian:~/tmp$ mv dir1/dir2/here/2.1st/ dir1/dir2/
+jingjing@debian:~/tmp$ mkdir tmp2
+jingjing@debian:~/tmp$ mv dir1 tmp2/dir1
+jingjing@debian:~/tmp$ tree
+.
+└── tmp2
+    └── dir1
+        ├── 1.1st
+        ├── 2.txt
+        └── dir2
+            ├── 1.txt
+            ├── 2.1st
+            └── here
+                ├── 1.tmp
+                └── 2.tmp
+
+4 directories, 6 files
+
+
+# End of file
